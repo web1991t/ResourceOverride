@@ -73,6 +73,7 @@ function replaceAfter(str, idx, match, replace) {
 }
 
 function matchReplace(pattern, replacePattern, str) {
+
     "use strict";
     var matchData;
     if (pattern.matched !== undefined && pattern.freeVars !== undefined) {
@@ -85,6 +86,16 @@ function matchReplace(pattern, replacePattern, str) {
     if (!matchData.matched) {
         // If the pattern didn't match.
         return str;
+    } else {
+        if(replacePattern.includes("api/proxy/vtt")) {
+            console.log(str);
+            console.log(pattern);
+            console.log(replacePattern);
+            replacePattern = replacePattern + "?source=" + str
+            console.log(replacePattern);
+
+        }
+
     }
 
     // Plug in the freevars in place of the stars.
